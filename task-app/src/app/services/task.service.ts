@@ -13,4 +13,12 @@ export class TaskService {
         this.tasks.push({taskName, taskDescription, taskStatus: 'pending'});
         console.log(this.tasks);
     }
+
+    updateTask(id: number, updatedTask: string, updatedDescription: string) {
+        
+    }
+
+    deleteTask(id: number) {
+        
+    }
 }
