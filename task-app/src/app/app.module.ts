@@ -5,6 +5,16 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { TasksListComponent } from './components/tasks-list/tasks-list.component';
+import { EditTaskComponent } from './components/tasks/edit-task/edit-task.component';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+const appRoutes: Routes = [
+  {
+    path: 'update/:id',
+    component: EditTaskComponent
+  }
+]
 
 @NgModule({
   declarations: [
@@ -12,9 +22,12 @@ import { TasksListComponent } from './components/tasks-list/tasks-list.component
     HeaderComponent,
     TasksComponent,
     TasksListComponent,
+    EditTaskComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

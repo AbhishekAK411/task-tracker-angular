@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Task } from 'src/app/models/task.model';
 import { TaskService } from 'src/app/services/task.service';
 
@@ -10,7 +11,10 @@ import { TaskService } from 'src/app/services/task.service';
 export class TasksListComponent implements OnInit {
   public tasks: Task[] = [];
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+      private taskService: TaskService,
+      private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.tasks = this.taskService.getTasks();
@@ -23,5 +27,9 @@ export class TasksListComponent implements OnInit {
 
   onDeleteTask(id: number) {
     this.taskService.deleteTask(id);
+  }
+
+  onUpdateTask(id: number) {
+    this.router.navigate(['/update', id]);
   }
 }
