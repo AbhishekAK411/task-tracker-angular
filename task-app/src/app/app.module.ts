@@ -8,6 +8,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TaskComponent } from './components/tasks/task/task.component';
 import { EditTaskComponent } from './components/tasks/edit-task/edit-task.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { EditTaskComponent } from './components/tasks/edit-task/edit-task.compon
     TasksComponent,
     TaskComponent,
     EditTaskComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
