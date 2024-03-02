@@ -17,7 +17,7 @@ import { HeaderComponent } from './components/header/header.component';
     TasksComponent,
     TaskComponent,
     EditTaskComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
