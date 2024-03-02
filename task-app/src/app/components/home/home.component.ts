@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TaskService } from '../tasks/tasks.service';
 import { Task } from '../tasks/tasks.model';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   tasks: Task[] = []; 
+  private changedTasksSubscription!: Subscription;
 
   constructor(
     private taskService: TaskService,
@@ -18,7 +20,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.tasks = this.taskService.getTasks();
-    console.log(this.tasks);
+    this.changedTasksSubscription = this.taskService.tasksChanged.subscribe(
+      (updatedTasks: Task[]) => {
+        this.tasks = updatedTasks;
+      }
+    )
+  }
+
+  ngOnDestroy(): void {
+    this.changedTasksSubscription.unsubscribe();
   }
 
   redirectToCreateTask() {
