@@ -34,4 +34,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   redirectToCreateTask() {
     this.router.navigate(['/tasks']);
   }
+
+  redirectToSingleTask(id: number) {
+    this.router.navigate(['/tasks', id]);
+  }
+
+  deleteTask(id: number) {
+    this.taskService.deleteTask(id);
+  }
+
+  changeTaskStatus(id: number) {
+    this.taskService.changeTaskStatus(id);
+  }
 }

@@ -11,7 +11,7 @@ export class TaskService {
     ];
 
     getTasks() {
-        return this.tasks.slice();
+        return this.tasks.slice(); 
     }
 
     getSingleTask(id: number) {
@@ -34,6 +34,16 @@ export class TaskService {
 
     deleteTask(id: number) {
         this.tasks.splice(id, 1);
+        this.tasksChanged.next(this.getTasks());
+    }
+
+    changeTaskStatus(id: number) {
+        const taskToChange = this.getSingleTask(id);
+
+        if(taskToChange && taskToChange.taskStatus !== 'completed') {
+            taskToChange.taskStatus = 'completed';
+        }
+
         this.tasksChanged.next(this.getTasks());
     }
 }
