@@ -1,6 +1,16 @@
 <div class="p-5 flex gap-9 flex-wrap" *ngIf="tasks.length > 0; else tasksNotFound">
     <div *ngFor="let task of tasks; let i = index">
-        <div class="card shadow"></div>
+        <div class="card shadow">
+            <div class="w-full h-12 flex items-center p-2">
+                <p class="font-sans font-light text-lg"> {{ task.taskName }} </p>
+            </div>
+            <div class="w-full h-40 p-2 overflow-hidden border border-t-slate-200 border-b-slate-300">
+                <p class="font-sans font-light text-sm"> {{ task.taskDescription }} </p>
+            </div>
+            <div class="w-full h-10 p-2 flex items-center">
+                <p class="font-sans font-light text-sm">status:  {{ task.taskStatus }} </p>
+            </div>
+        </div>
     </div>
 </div>
 <ng-template #tasksNotFound>

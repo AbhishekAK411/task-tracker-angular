@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   isOpen: boolean = false;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router
+  ) {
     
   }
 
@@ -19,5 +21,6 @@ export class HeaderComponent {
   
   toggleDropdown() {
     this.isOpen = !this.isOpen;
+    
   }
 }
