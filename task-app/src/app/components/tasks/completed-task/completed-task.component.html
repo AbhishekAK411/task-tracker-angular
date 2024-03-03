@@ -5,7 +5,6 @@
                 <p class="font-sans font-light text-lg"> {{ task.taskName }} </p>
                 <div class="flex">
                     <button (click)="redirectToSingleTask(i)" type="button" class="scale-90 px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View</button>
-                    <button (click)="redirectToUpdate(i)" type="button" class="scale-90 px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</button>
                 </div>
             </div>
             <div class="w-full h-[58%] p-2 overflow-hidden border border-t-slate-200 border-b-slate-300">
@@ -24,8 +23,8 @@
 </div>
 <ng-template #tasksNotFound>
     <div class="flex flex-col items-center justify-center">
-        <p class="text-center pt-10">Tasks do not exist.</p>
-        <button (click)="redirectToCreateTask()" type="button" class="focus:outline-none
+        <p class="text-center pt-10">There are no completed tasks.</p>
+        <button (click)="redirectToHome()" type="button" class="focus:outline-none
             mt-5 
             text-white 
             bg-green-700 
@@ -42,7 +41,7 @@
             dark:bg-green-600 
             dark:hover:bg-green-700 
             dark:focus:ring-green-800">
-        Proceed to add task.
+        Home
         </button>
     </div>
 </ng-template>
