@@ -1,1 +1,11 @@
-<p>task works!</p>
+<div class="w-full h-screen flex items-center justify-center">
+    <div class="w-11/12 h-screen mt-10">
+        <div class="w-full h-20 flex flex-col p-5">
+            <p class="font-sans font-medium text-xl">{{ task?.taskName }} </p>
+            <p class="font-sans font-medium text-sm"> {{task?.taskStatus }} </p>
+        </div>
+        <div class="w-full h-40 p-5">
+            <p class="font-sans font-medium text-base"> {{ task?.taskDescription}} </p>
+        </div>
+    </div>
+</div>

@@ -14,8 +14,22 @@ export class TaskService {
         return this.tasks.slice();
     }
 
+    getSingleTask(id: number) {
+        const singleTask: Task | undefined = this.tasks.find((_, i) => i === id);
+        return singleTask;
+    }
+
     addTasks(taskName: string, taskDescription: string) {
         this.tasks.push({taskName, taskDescription, taskStatus: 'pending'});
+    }
+
+    updateTask(id: number, newName: string, newDescription: string) {
+        const taskToUpdate = this.getSingleTask(id);
+
+        if(taskToUpdate){
+            taskToUpdate.taskName = newName;
+            taskToUpdate.taskDescription = newDescription;
+        }
     }
 
     deleteTask(id: number) {

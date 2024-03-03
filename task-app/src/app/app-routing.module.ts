@@ -13,17 +13,15 @@ const appRoutes: Routes = [
     {
         path: 'tasks',
         component: TasksComponent,
-        children: [
-            {
-                path: ':id',
-                component: TaskComponent
-            },
-            {
-                path: ':id/update',
-                component: EditTaskComponent
-            }
-        ]
     },
+    {
+        path: 'tasks/:id',
+        component: TaskComponent,
+    },
+    {
+        path: 'tasks/:id/update',
+        component: EditTaskComponent
+    }
 ]
 
 @NgModule({
