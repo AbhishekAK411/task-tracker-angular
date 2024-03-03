@@ -2,9 +2,11 @@ import { Injectable } from "@angular/core";
 import { Task } from "./tasks.model";
 import { Subject } from "rxjs";
 
+
 @Injectable()
 export class TaskService {
     tasksChanged = new Subject<Task[]>();
+    singleTaskChanged = new Subject<Task>();
     private tasks: Task[] = [
         new Task('Test task 1', 'Test description 1', 'pending'),
         new Task('Test task 2', 'Test description 2', 'pending'),
@@ -29,7 +31,9 @@ export class TaskService {
         if(taskToUpdate){
             taskToUpdate.taskName = newName;
             taskToUpdate.taskDescription = newDescription;
+            this.singleTaskChanged.next(taskToUpdate);
         }
+
     }
 
     deleteTask(id: number) {
