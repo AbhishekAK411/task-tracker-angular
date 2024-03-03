@@ -6,6 +6,7 @@ import { Subject } from "rxjs";
 @Injectable()
 export class TaskService {
     tasksChanged = new Subject<Task[]>();
+    completedTasksChanged = new Subject<Task[]>();
     singleTaskChanged = new Subject<Task>();
 
     private tasks: Task[] = [
@@ -22,10 +23,6 @@ export class TaskService {
         return this.tasks.slice(); 
     }
 
-    getCompletedTasks() {
-        return this.completedTasks.slice();
-    }
-
     getSingleTask(id: number) {
         const singleTask: Task | undefined = this.tasks.find((_, i) => i === id);
         return singleTask;
@@ -37,13 +34,11 @@ export class TaskService {
 
     updateTask(id: number, newName: string, newDescription: string) {
         const taskToUpdate = this.getSingleTask(id);
-
         if(taskToUpdate){
             taskToUpdate.taskName = newName;
             taskToUpdate.taskDescription = newDescription;
             this.singleTaskChanged.next(taskToUpdate);
         }
-
     }
 
     deleteTask(id: number) {
@@ -53,11 +48,23 @@ export class TaskService {
 
     changeTaskStatus(id: number) {
         const taskToChange = this.getSingleTask(id);
-
         if(taskToChange && taskToChange.taskStatus !== 'completed') {
             taskToChange.taskStatus = 'completed';
         }
-
         this.tasksChanged.next(this.getTasks());
+    }
+
+    getCompletedTasks() {
+        return this.completedTasks.slice();
+    }
+
+    getSingleCompletedTask(id: number) {
+        const singleTask: Task | undefined = this.completedTasks.find((_, i) => id === i);
+        return singleTask;
+    }
+
+    deleteCompletedTask(id: number) {
+        this.completedTasks.splice(id, 1);
+        this.completedTasksChanged.next(this.getCompletedTasks());
     }
 }
