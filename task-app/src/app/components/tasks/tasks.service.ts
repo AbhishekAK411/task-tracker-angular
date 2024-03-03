@@ -7,13 +7,23 @@ import { Subject } from "rxjs";
 export class TaskService {
     tasksChanged = new Subject<Task[]>();
     singleTaskChanged = new Subject<Task>();
+
     private tasks: Task[] = [
         new Task('Test task 1', 'Test description 1', 'pending'),
         new Task('Test task 2', 'Test description 2', 'pending'),
     ];
 
+    private completedTasks: Task[] = [
+        new Task('Test task 3', 'Test description 3', 'completed'),
+        new Task('Test task 4', 'Test description 4', 'completed')
+    ]
+
     getTasks() {
         return this.tasks.slice(); 
+    }
+
+    getCompletedTasks() {
+        return this.completedTasks.slice();
     }
 
     getSingleTask(id: number) {

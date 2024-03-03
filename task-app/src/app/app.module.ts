@@ -10,6 +10,7 @@ import { TaskComponent } from './components/tasks/task/task.component';
 import { EditTaskComponent } from './components/tasks/edit-task/edit-task.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TaskService } from './components/tasks/tasks.service';
+import { CompletedTaskComponent } from './components/tasks/completed-task/completed-task.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TaskService } from './components/tasks/tasks.service';
     TasksComponent,
     TaskComponent,
     EditTaskComponent,
-    HeaderComponent
+    HeaderComponent,
+    CompletedTaskComponent
   ],
   imports: [
     BrowserModule,
