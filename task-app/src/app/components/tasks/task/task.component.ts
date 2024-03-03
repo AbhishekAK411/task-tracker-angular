@@ -11,6 +11,7 @@ import { Task } from '../tasks.model';
 export class TaskComponent implements OnInit {
   task!: Task | undefined;
   private taskId!: number;
+  private fragmentLoaded!: string | null;
 
   constructor(
     private taskService: TaskService,
@@ -20,7 +21,12 @@ export class TaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskId = +this.route.snapshot.params['id'];
-    this.task = this.taskService.getSingleTask(this.taskId);
+    this.fragmentLoaded = this.route.snapshot.fragment;
+    if(this.fragmentLoaded){
+      this.task = this.taskService.getSingleCompletedTask(this.taskId);
+    }else{
+      this.task = this.taskService.getSingleTask(this.taskId);
+    }
   }
 
   redirectToUpdate() {

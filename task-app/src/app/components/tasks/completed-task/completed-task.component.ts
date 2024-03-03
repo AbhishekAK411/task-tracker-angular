@@ -32,7 +32,7 @@ export class CompletedTaskComponent implements OnInit, OnDestroy {
   }
 
   redirectToSingleTask(id: number) {
-    
+    this.router.navigate(['/tasks', id], {fragment: 'completed'});
   }
 
   deleteTask(id: number) {
