@@ -50,6 +50,8 @@ export class TaskService {
         const taskToChange = this.getSingleTask(id);
         if(taskToChange && taskToChange.taskStatus !== 'completed') {
             taskToChange.taskStatus = 'completed';
+            this.tasks.splice(id, 1);
+            this.completedTasks.push(taskToChange);
         }
         this.tasksChanged.next(this.getTasks());
     }
