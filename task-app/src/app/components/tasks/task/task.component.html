@@ -7,7 +7,7 @@
                 <p class="font-sans font-semibold text-sm text-green-600"> {{task?.taskStatus }} </p>
             </ng-template>
             <div class="absolute right-5 top-0">
-                <button (click)="redirectToUpdate()" type="button" class="focus:outline-none
+                <button *ngIf="task?.taskStatus === 'pending'" (click)="redirectToUpdate()" type="button" class="focus:outline-none
                 mt-5 
                 text-white 
                 bg-green-700 

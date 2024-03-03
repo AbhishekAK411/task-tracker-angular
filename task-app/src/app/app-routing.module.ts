@@ -4,6 +4,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { TasksComponent } from "./components/tasks/tasks.component";
 import { TaskComponent } from "./components/tasks/task/task.component";
 import { EditTaskComponent } from "./components/tasks/edit-task/edit-task.component";
+import { CompletedTaskComponent } from "./components/tasks/completed-task/completed-task.component";
 
 const appRoutes: Routes = [
     {
@@ -21,6 +22,10 @@ const appRoutes: Routes = [
     {
         path: 'tasks/:id/update',
         component: EditTaskComponent
+    },
+    {
+        path: 'completed',
+        component: CompletedTaskComponent
     }
 ]
 
